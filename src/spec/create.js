@@ -1,5 +1,4 @@
 var gp = require('../lib/gp.node');
-var brepTest = require('../lib/brepTest.node');
 var Geom = require('../lib/Geom.node');
 var creategp = {
   XYZ() {
@@ -43,24 +42,6 @@ var creategp = {
     ), 5);
   }
 };
-var createbrepTest = {
-  MakeFace() {
-    return new brepTest.MakeFace();
-  },
-  Shape() {
-    var sphere = creategp.Sphere()
-    var mk = new brepTest.MakeFace(sphere);
-
-    return mk.face();
-  },
-  Face() {
-    var sphere = creategp.Sphere()
-    var mk = new brepTest.MakeFace(sphere);
-
-    return mk.face();
-  }
-
-};
 var createGeom = {
   SphericalSurface() {
     return new Geom.SphericalSurface(creategp.Ax3(), 10);
@@ -91,11 +72,10 @@ var createGeom = {
     ];
     var arr = new Geom.Array1OfPnt(0, 4);
     points.forEach((pnt, index) => arr.setValue(index, pnt));
-    return new Geom.BezierCurve(arr);
+    //return new Geom.BezierCurve(arr);
   }
 };
 module.exports = {
   gp: creategp,
-  Geom: createGeom,
-  brepTest: createbrepTest
+  Geom: createGeom
 };

@@ -1,3 +1,5 @@
-const settings = require('../src/settings.js');
-settings.initialize();
-require('../src/tasks/main.js');
+const noceWrap = require('oce-wrap');
+const gulp = require('gulp');
+noceWrap.init(gulp, {
+  paths: { dist: '../noce' }
+});
