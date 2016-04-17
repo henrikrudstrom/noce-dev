@@ -73,6 +73,15 @@ var createGeom = {
     var arr = new Geom.Array1OfPnt(0, 4);
     points.forEach((pnt, index) => arr.setValue(index, pnt));
     //return new Geom.BezierCurve(arr);
+  },
+  Circle() {
+    return new Geom.Circle(creategp.Ax2(), 2);
+  },
+  TrimmedCurve() {
+    return new Geom.TrimmedCurve(createGeom.Circle(),0, 1.5, true);
+  },
+  Curve() {
+    return createGeom.Circle();
   }
 };
 module.exports = {

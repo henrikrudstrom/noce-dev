@@ -13,11 +13,17 @@ module.exports = function(mod) {
   mod.include('Geom_CylindricalSurface');
   mod.include('Geom_AxisPlacement');
   mod.include('Geom_Axis1Placement');
+  mod.include('Geom_Curve');
+  mod.include('Geom_Conic');
+  mod.include('Geom_BoundedCurve');
+  mod.include('Geom_Circle');
+  mod.include('Geom_TrimmedCurve');
   //mod.include('Geom_Curve');
   //mod.include('Geom_BoundedCurve');
   //  mod.include('Geom_BezierCurve');
   //mod.include('TColgp_Array1OfPnt');
 
+  //mod.find('Geom_Circle').includeGCMake('')
 
   mod.find('*').include('*');
   mod.find('*')
@@ -33,6 +39,7 @@ module.exports = function(mod) {
   mod.find('*').downCastToThis('Copy');
   mod.find('*').downCastToThis('UReversed');
   mod.find('*').downCastToThis('VReversed');
+  mod.find('*').downCastToThis('Reversed');
 
 
   // mod.include('Handle_Geom_Geometry');
