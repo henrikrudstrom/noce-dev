@@ -14,6 +14,7 @@
 /*%include ../common/FunctionTransformers.i*/
 %include Operators.i
 
+// TODO: seems wasteful to compile this in for every module...
 class Standard_Transient {};
 class MMgt_TShared : public Standard_Transient {};
 class Handle_Standard_Transient {};
