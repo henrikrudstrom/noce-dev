@@ -43,8 +43,8 @@ module.exports = function(mod) {
   mod.find('*').downCastToThis('UReversed');
   mod.find('*').downCastToThis('VReversed');
   mod.find('*').downCastToThis('Reversed');
-  mod.get('Geom_TrimmedCurve').includeGCMake('GC_MakeArcOfCircle');
-  mod.get('Geom_TrimmedCurve').includeGCMake('GC_MakeSegment');
+  mod.get('Geom_TrimmedCurve').includeGCMake('GC_MakeArcOfCircle(*)');
+  mod.get('Geom_TrimmedCurve').includeGCMake('GC_MakeSegment(*)');
   mod.get('Geom_Circle').includeGCMake('GC_MakeCircle(*)');
 
 
