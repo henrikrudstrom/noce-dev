@@ -2,7 +2,7 @@ const camelCase = require('camel-case');
 module.exports = function(mod) {
   mod.name = 'Geom';
   mod.depends('gp');
-  mod.camelCase('*::*');
+  mod.find('*').camelCase('*');
   mod.removePrefix('*');
   // mod.include('Standard_Type');
   // mod.include('Handle_Standard_Type');
@@ -23,14 +23,15 @@ module.exports = function(mod) {
   //  mod.include('Geom_BezierCurve');
   //mod.include('TColgp_Array1OfPnt');
 
-  //mod.find('Geom_Circle').includeGCMake('')
 
   mod.find('*').include('*');
+  mod.noHandle('*');
+
+
   mod.find('*')
     .argout('Bounds')
     .argout('TransformParameters')
     .argout('Coefficients');
-  mod.noHandle('*');
   mod.find('*').downCastToThis('Scaled');
   mod.find('*').downCastToThis('Transformed');
   mod.find('*').downCastToThis('Translated');
@@ -40,6 +41,9 @@ module.exports = function(mod) {
   mod.find('*').downCastToThis('UReversed');
   mod.find('*').downCastToThis('VReversed');
   mod.find('*').downCastToThis('Reversed');
+  mod.get('Geom_TrimmedCurve').includeGCMake('GC_MakeArcOfCircle');
+  mod.get('Geom_TrimmedCurve').includeGCMake('GC_MakeSegment');
+  mod.get('Geom_Circle').includeGCMake('GC_MakeCircle(*)');
 
 
   // mod.include('Handle_Geom_Geometry');

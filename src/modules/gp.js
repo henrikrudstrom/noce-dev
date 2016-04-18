@@ -30,7 +30,7 @@ module.exports = function(mod) {
 
 
 
-  mod.camelCase('*::*');
+  mod.find('*').camelCase('*');
   mod.removePrefix('*');
 
   const trsfs = ['Mirror', 'Rotate', 'Scale', 'Transform', 'Translate', 'Cross', 'CrossCross'];
