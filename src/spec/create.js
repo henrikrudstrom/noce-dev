@@ -1,6 +1,6 @@
 var gp = require('../lib/gp.node');
 var Geom = require('../lib/Geom.node');
-
+var brep = require('../lib/brep.node');
 
 var currentDouble = 0;
 var maxDouble = 29;
@@ -91,9 +91,31 @@ var createGeom = {
   },
   Curve() {
     return createGeom.Circle();
+  },
+  Line(){
+    return new Geom.Line(creategp.Pnt(), creategp.Dir());
   }
 };
+var createbrep = {
+  Vertex(){
+    return brep.makeVertex(creategp.Pnt());
+  },
+  Edge(){
+    return brep.makeEdge(createGeom.Line());
+  },
+  Shape() {
+    return createbrep.Edge();
+  }, 
+  Orientation() {
+    return createbrep.TopAbs_FORWARD;
+  },
+  Location() {
+    return new brep.Location();
+  }
+  
+}
 module.exports = {
   gp: creategp,
-  Geom: createGeom
+  Geom: createGeom,
+  brep: createbrep
 };

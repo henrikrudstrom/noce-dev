@@ -13,8 +13,8 @@
 %include ExceptionCatcher.i
 /*%include ../common/FunctionTransformers.i*/
 %include Operators.i
-%include javascriptfragments.swg
-/*class Standard_Transient {}
-class MMgt_TShared : public Standard_Transient {}
-class Handle_Standard_Transient {}
-class Handle_MMgt_TShared : public Handle_Standard_Transient {}*/
+
+class Standard_Transient {};
+class MMgt_TShared : public Standard_Transient {};
+class Handle_Standard_Transient {};
+class Handle_MMgt_TShared : public Handle_Standard_Transient {};

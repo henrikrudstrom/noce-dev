@@ -17,6 +17,7 @@ module.exports = function(mod) {
   mod.include('Geom_BoundedCurve');
   mod.include('Geom_Circle');
   mod.include('Geom_TrimmedCurve');
+  mod.include('Geom_Line');
   //mod.include('Geom_Curve');
   //mod.include('Geom_BoundedCurve');
   //  mod.include('Geom_BezierCurve');

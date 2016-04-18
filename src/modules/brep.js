@@ -8,9 +8,15 @@ module.exports = function(mod) {
   mod.include('TopAbs_Orientation');
   mod.include('TopoDS_Shape');
   mod.include('TopoDS_Edge');
+  mod.include('TopoDS_Vertex');
+  mod.includeBRepBuilder('BRepBuilderAPI_MakeEdge(Handle_Geom_*)', 'Edge');
+  mod.includeBRepBuilder('BRepBuilderAPI_MakeVertex(*)', 'Vertex');
+  mod.find('TopoDS_Shape')
+    .rename('Location(TopLoc_Location)', 'SetLocation')
+    .rename('Orientation(TopAbs_Orientation)', 'SetOrientation')
   mod.find('*').camelCase('*');
-  mod.removePrefix('TopoDS_*');
+  mod.removePrefix('*');
   mod.find('*').include('*');
   mod.noHandle('*');
-  mod.includeBRepBuilder('BRepBuilderAPI_MakeEdge(Handle_Geom_*)', 'Edge');
+  
 };

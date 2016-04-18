@@ -15,6 +15,9 @@ var notWorking = {
   ],
   'Geom.TrimmedCurve': [
     'makeArcOfCircle(gp.Pnt, gp.Pnt, gp.Pnt)'
+  ], 
+  'Geom.Line': [
+    'period()'
   ]
 };
 
