@@ -105,14 +105,14 @@ var createbrep = {
   },
   Shape() {
     return createbrep.Edge();
-  }, 
+  },
   Orientation() {
-    return createbrep.TopAbs_FORWARD;
+    return brep.Orientation.TopAbs_FORWARD;
   },
   Location() {
-    return new brep.Location();
+    return new brep.Location(creategp.Trsf());
   }
-  
+
 }
 module.exports = {
   gp: creategp,
