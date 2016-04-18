@@ -13,10 +13,11 @@ module.exports = function(mod) {
   mod.includeBRepBuilder('BRepBuilderAPI_MakeVertex(*)', 'Vertex');
   mod.find('TopoDS_Shape')
     .rename('Location(TopLoc_Location)', 'SetLocation')
-    .rename('Orientation(TopAbs_Orientation)', 'SetOrientation')
+    .rename('Orientation(TopAbs_Orientation)', 'SetOrientation');
+
   mod.find('*').camelCase('*');
   mod.removePrefix('*');
   mod.find('*').include('*');
   mod.noHandle('*');
-  
+  mod.find('TopoDS_*').exclude((decl) => decl.cls === 'constructor');
 };
