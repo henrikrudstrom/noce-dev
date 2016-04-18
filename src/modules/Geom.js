@@ -2,8 +2,7 @@ const camelCase = require('camel-case');
 module.exports = function(mod) {
   mod.name = 'Geom';
   mod.depends('gp');
-  mod.find('*').camelCase('*');
-  mod.removePrefix('*');
+
   // mod.include('Standard_Type');
   // mod.include('Handle_Standard_Type');
   mod.include('Geom_Geometry');
@@ -25,6 +24,8 @@ module.exports = function(mod) {
 
 
   mod.find('*').include('*');
+  mod.find('*').camelCase('*');
+  mod.removePrefix('*');
   mod.noHandle('*');
 
 
