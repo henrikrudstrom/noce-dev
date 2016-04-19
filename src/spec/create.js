@@ -117,14 +117,16 @@ var createbrep = {
     var pt1 = new gp.Pnt(0, 0, 0);
     var pt2 = new gp.Pnt(1, 4, 6);
     var pt3 = new gp.Pnt(4, 5, 0);
-    console.log("HEY")
     var l1 = Geom.TrimmedCurve.makeSegment(pt1, pt2);
-    console.log("HEY")
     var e1 = brep.makeEdge(l1)
     var l2 = Geom.TrimmedCurve.makeSegment(pt2, pt3);
     var e2 = brep.makeEdge(l2)
     console.log("E",e2)
-    return new brep.makeWire(e1);
+    return brep.makeWire(e1);
+  }, 
+  Face() {
+    var surf = createGeom.Surface();
+    return brep.makeFace(surf, 0.01);
   }
 
 }
