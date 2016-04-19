@@ -18,6 +18,9 @@ var notWorking = {
   ],
   'Geom.Line': [
     'period()'
+  ],
+  'brep': [
+
   ]
 };
 

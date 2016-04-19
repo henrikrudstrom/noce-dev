@@ -9,15 +9,15 @@ module.exports = function(mod) {
   mod.include('TopoDS_Shape');
   mod.include('TopoDS_Vertex');
   mod.include('TopoDS_Edge');
-  // mod.include('TopoDS_Wire');
-  // mod.include('TopoDS_Face');
-  // mod.include('TopoDS_Shell');
-  // mod.include('TopoDS_Solid');
-  // mod.include('TopoDS_Vertex');
+  mod.include('TopoDS_Wire');
+  mod.include('TopoDS_Face');
 
   mod.find('*').include('*');
   mod.includeBRepBuilder('BRepBuilderAPI_MakeEdge(Handle_Geom_*)', 'Edge');
   mod.includeBRepBuilder('BRepBuilderAPI_MakeVertex(*)', 'Vertex');
+  mod.includeBRepBuilder('BRepBuilderAPI_MakeWire(*)', 'Wire');
+  mod.includeBRepBuilder('BRepBuilderAPI_MakeFace(Handle_Geom_*)', 'Face');
+  mod.includeBRepBuilder('BRepBuilderAPI_MakeFace(TopoDS_*)', 'Face');
   mod.find('TopoDS_Shape')
     .rename('Location(TopLoc_Location)', 'SetLocation')
     .rename('Orientation(TopAbs_Orientation)', 'SetOrientation');
