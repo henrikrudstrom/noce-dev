@@ -1,6 +1,6 @@
 module.exports = function(mod) {
   mod.name = 'mesh';
-  mod.noSwig = true;
+  //mod.noSwig = true;
   mod.extraSources = ['Mesh.cc', 'Util.cc', 'GeometryBuilder.cc'];
   mod.extraIncludes = ['<!(node -e "require(\'nan\')")'];
   mod.libraries = [
