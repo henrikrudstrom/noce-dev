@@ -1,7 +1,32 @@
 #pragma once
 #include "NodeV8.h"
-#include "GeometryBuilder.h"
 #include <vector>
+
+#include <TopoDS.hxx>
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Wire.hxx>
+#include <TopoDS_Face.hxx>
+#include <Poly_Triangulation.hxx>
+#include <Poly_Connect.hxx>
+#include <Poly_PolygonOnTriangulation.hxx>
+#include <Poly_Array1OfTriangle.hxx>
+#include <Handle_Geom_Surface.hxx>
+#include <GeomAPI_ProjectPointOnSurf.hxx>
+#include <gp_Pnt.hxx>
+#include <gp_Vec.hxx>
+#include <gp_Dir.hxx>
+#include <BRep_Tool.hxx>
+#include <TopExp_Explorer.hxx>
+#include <TopAbs.hxx>
+#include <TColStd_Array1OfInteger.hxx>
+#include <Standard_Failure.hxx>
+#include <Handle_Standard_Failure.hxx>
+#include <TColgp_Array1OfPnt.hxx>
+#include <Standard_Real.hxx>
+#include <Standard_Integer.hxx>
+#include <Standard_Boolean.hxx>
+#include <StdFail_NotDone.hxx>
+#include <GeomLProp_SLProps.hxx>
 
 struct Coord3f {
     float x;

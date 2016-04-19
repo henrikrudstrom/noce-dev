@@ -332,3 +332,9 @@ void Mesh::optimize()
 
 
 }
+
+void Initialize(v8::Handle<v8::Object> target)
+{
+    Mesh::Init(target);
+}
+NODE_MODULE(mesh, Initialize)
