@@ -124,12 +124,29 @@ var createbrep = {
     var e1 = brep.makeEdge(l1)
     var l2 = Geom.TrimmedCurve.makeSegment(pt2, pt3);
     var e2 = brep.makeEdge(l2)
-    // console.log("E",e2)
+      // console.log("E",e2)
     return brep.makeWire(e1);
   },
   Face() {
     var surf = createGeom.Surface();
     return brep.makeFace(surf, 0.01);
+  },
+  Shell() {
+    var sphere = createGeom.SphericalSurface();
+    return brep.makeShell(sphere, false);
+  },
+  Explorer() {
+    var surface = createGeom.Face();
+    return brep.Explorer(surface, 5);
+  },
+  Revolution() {
+    return createbrep.Cone()
+  },
+  Cone() {
+    return new brep.Cone(0.3, creategp.Ax2(), 3, 2);
+  },
+  OneAxis() {
+    return createbrep.Revolution();
   }
 
 }

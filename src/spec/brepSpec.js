@@ -56,14 +56,14 @@ describe('brep', function() {
     expect(res.constructor.name.replace('_exports_', '')).toBe('Edge');
   });
 
-  xit('makeWire()', function(){
+  xit('makeWire()', function() {
     // console.log('makeWire()')
     var res = brep.makeWire();
     expect(typeof res).toBe('object');
     expect(res.constructor.name.replace('_exports_', '')).toBe('Wire');
   });
 
-  xit('makeWire(brep.Edge, brep.Edge)', function(){
+  xit('makeWire(brep.Edge, brep.Edge)', function() {
     // console.log('makeWire(brep.Edge, brep.Edge)')
     var res = brep.makeWire(create.brep.Edge(), create.brep.Edge());
     expect(typeof res).toBe('object');
@@ -71,7 +71,7 @@ describe('brep', function() {
   });
 
 
-  xit('makeWire(brep.Edge, brep.Edge, brep.Edge)', function(){
+  xit('makeWire(brep.Edge, brep.Edge, brep.Edge)', function() {
     // console.log('makeWire(brep.Edge, brep.Edge, brep.Edge)')
     var res = brep.makeWire(create.brep.Edge(), create.brep.Edge(), create.brep.Edge());
     expect(typeof res).toBe('object');
@@ -79,7 +79,7 @@ describe('brep', function() {
   });
 
 
-  xit('makeWire(brep.Edge, brep.Edge, brep.Edge, brep.Edge)', function(){
+  xit('makeWire(brep.Edge, brep.Edge, brep.Edge, brep.Edge)', function() {
     // console.log('makeWire(brep.Edge, brep.Edge, brep.Edge, brep.Edge)')
     var res = brep.makeWire(create.brep.Edge(), create.brep.Edge(), create.brep.Edge(), create.brep.Edge());
     expect(typeof res).toBe('object');
@@ -87,14 +87,14 @@ describe('brep', function() {
   });
 
 
-  xit('makeWire(brep.Wire, brep.Edge)', function(){
+  xit('makeWire(brep.Wire, brep.Edge)', function() {
     // console.log('makeWire(brep.Wire, brep.Edge)')
     var res = brep.makeWire(create.brep.Wire(), create.brep.Edge());
     expect(typeof res).toBe('object');
     expect(res.constructor.name.replace('_exports_', '')).toBe('Wire');
   });
 
-  xit('makeFace(brep.Face)', function(){
+  xit('makeFace(brep.Face)', function() {
     // console.log('makeFace(brep.Face)')
     var res = brep.makeFace(create.brep.Face());
     expect(typeof res).toBe('object');
@@ -102,10 +102,31 @@ describe('brep', function() {
   });
 
 
-  xit('makeFace(brep.Wire, Boolean)', function(){
+  xit('makeFace(brep.Wire, Boolean)', function() {
     // console.log('makeFace(brep.Wire, Boolean)')
     var res = brep.makeFace(create.brep.Wire(), true);
     expect(typeof res).toBe('object');
     expect(res.constructor.name.replace('_exports_', '')).toBe('Face');
   });
+
+  it('makeShell(Geom.Surface, Boolean)', function() {
+    var res = brep.makeShell(create.Geom.SphericalSurface(), false);
+    expect(typeof res).toBe('object');
+    expect(res.constructor.name.replace('_exports_', '')).toBe('Shell');
+  });
+
+
+  it('makeShell(Geom.Surface, Double, Double, Double, Double, Boolean)', function() {
+    var res = brep.makeShell(create.Geom.SphericalSurface(), 0, 1, 0, 1, false);
+    expect(typeof res).toBe('object');
+    expect(res.constructor.name.replace('_exports_', '')).toBe('Shell');
+  });
+
+  it('map shapes', function() {
+    var ax2 = new gp.Ax3(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0), new gp.Dir(0, 0, 1));
+    var plane = new Geom.Plane(ax2);
+    var face = brep.makeFace(plane, -1, 1, -1, 1, 0.01);
+    var map = brep.TopExp.vertices(face);
+    console.log(map)
+  })
 });

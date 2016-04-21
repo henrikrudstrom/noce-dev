@@ -24,6 +24,15 @@ var notWorking = {
   ],
   'brep': [
 
+  ],
+  'brep.Cone': [
+    'startTopEdge()'
+  ],
+  'brep.OneAxis': [
+    'startTopEdge()'
+  ],
+  'brep.Revolution': [
+    'startTopEdge()'
   ]
 };
 
