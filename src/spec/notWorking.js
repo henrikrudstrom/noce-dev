@@ -22,9 +22,6 @@ var notWorking = {
   'Geom.Plane': [
     'uperiod()', 'vperiod()'
   ],
-  'brep': [
-
-  ],
   'brep.Cone': [
     'startTopEdge()'
   ],
