@@ -35,7 +35,7 @@ v8::Local<v8::Object> tesselate(const TopoDS_Face& face, double factor, double a
   BRepMesh_IncrementalMesh IncrementalMesh(face, factor, Standard_True, angle * 3.14159 / 180.0 , Standard_True);
   int res = mesher->extractFaceMesh(face, qualityNormals);
 
-  v8::Local<v8::Object> vertices = _makeTypedArray(&(mesher->vertices.data()[0].x), (int)mesher->vertices.size()*3);
+  /*v8::Local<v8::Object> vertices = _makeTypedArray(&(mesher->vertices.data()[0].x), (int)mesher->vertices.size()*3);
   v8::Local<v8::Object> normals = _makeTypedArray(&(mesher->normals.data()[0].x), (int)mesher->normals.size()*3);
   v8::Local<v8::Object> triangles = _makeTypedArray(&(mesher->triangles.data()[0].i), (int)mesher->triangles.size()*3);
   v8::Local<v8::Object> edgeindices = _makeTypedArray(&(mesher->edgeindices.data()[0]), (int)mesher->edgeindices.size()*3);
@@ -44,7 +44,12 @@ v8::Local<v8::Object> tesselate(const TopoDS_Face& face, double factor, double a
   mesh->Set(SWIGV8_STRING_NEW("vertices"), vertices);
   mesh->Set(SWIGV8_STRING_NEW("normals"), normals);
   mesh->Set(SWIGV8_STRING_NEW("triangles"), triangles);
-  mesh->Set(SWIGV8_STRING_NEW("edgeindices"), edgeindices);
+  mesh->Set(SWIGV8_STRING_NEW("edgeindices"), edgeindices);*/
+  v8::Local<v8::Object> mesh = SWIGV8_OBJECT_NEW();
+  mesh->Set(SWIGV8_STRING_NEW("vertices"), _makeTypedArray(&(mesher->vertices.data()[0].x), (int)mesher->vertices.size()*3));
+  mesh->Set(SWIGV8_STRING_NEW("normals"), _makeTypedArray(&(mesher->normals.data()[0].x), (int)mesher->normals.size()*3));
+  mesh->Set(SWIGV8_STRING_NEW("triangles"), _makeTypedArray(&(mesher->triangles.data()[0].i), (int)mesher->triangles.size()*3));
+  //mesh->Set(SWIGV8_STRING_NEW("edgeindices"), edgeindices);
 
   return mesh;
 }
