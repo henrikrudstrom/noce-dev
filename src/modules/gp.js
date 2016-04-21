@@ -19,7 +19,7 @@ module.exports = function(mod) {
     .property('X', 'SetX')
     .property('Y', 'SetY')
     .property('Z', 'SetZ');
-  mod.get('gp_Trsf').argout('GetRotation');
+  mod.get('gp_Trsf').argoutObject('GetRotation');
 
 
 

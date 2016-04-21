@@ -32,9 +32,9 @@ module.exports = function(mod) {
 
 
   mod.find('*')
-    .argout('Bounds')
-    .argout('TransformParameters')
-    .argout('Coefficients');
+    .argoutObject('Bounds')
+    .argoutObject('TransformParameters')
+    .argoutObject('Coefficients');
   mod.find('*').downCastToThis('Scaled');
   mod.find('*').downCastToThis('Transformed');
   mod.find('*').downCastToThis('Translated');
