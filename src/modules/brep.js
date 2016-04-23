@@ -31,30 +31,30 @@ module.exports = function(mod) {
   mod.includeBRepBuilder('BRepBuilderAPI_MakeFace(TopoDS_*)', 'Face');
   mod.includeBRepBuilder('BRepBuilderAPI_MakeShell(Handle_Geom_*)', 'Shell');
 
-  mod.find('TopoDS_Edge')
-    .topoSubShapes('vertices', 'VERTEX');
+  // mod.find('TopoDS_Edge')
+  //   .topoSubShapes('vertices', 'VERTEX');
 
-  mod.find('TopoDS_Wire')
-    .topoSubShapes('vertices', 'VERTEX')
-  mod.find('TopoDS_Wire')
-    .topoSubShapes('edges', 'EDGE');
+  // mod.find('TopoDS_Wire')
+  //   .topoSubShapes('vertices', 'VERTEX')
+  // mod.find('TopoDS_Wire')
+  //   .topoSubShapes('edges', 'EDGE');
 
-  mod.find('TopoDS_Face')
-    .topoSubShapes('vertices', 'VERTEX')
-    .topoSubShapes('edges', 'EDGE');
+  // mod.find('TopoDS_Face')
+  //   .topoSubShapes('vertices', 'VERTEX')
+  //   .topoSubShapes('edges', 'EDGE');
 
-  mod.find('TopoDS_Shell')
-    .topoSubShapes('vertices', 'VERTEX')
-    .topoSubShapes('edges', 'EDGE')
-    .topoSubShapes('faces', 'FACE')
-    .topoSubShapes('wires', 'WIRE');
+  // mod.find('TopoDS_Shell')
+  //   .topoSubShapes('vertices', 'VERTEX')
+  //   .topoSubShapes('edges', 'EDGE')
+  //   .topoSubShapes('faces', 'FACE')
+  //   .topoSubShapes('wires', 'WIRE');
 
-  mod.find('TopoDS_Solid')
-    .topoSubShapes('vertices', 'VERTEX')
-    .topoSubShapes('edges', 'EDGE')
-    .topoSubShapes('faces', 'FACE')
-    .topoSubShapes('wires', 'WIRE')
-    .topoSubShapes('shell', 'SHELL');
+  // mod.find('TopoDS_Solid')
+  //   .topoSubShapes('vertices', 'VERTEX')
+  //   .topoSubShapes('edges', 'EDGE')
+  //   .topoSubShapes('faces', 'FACE')
+  //   .topoSubShapes('wires', 'WIRE')
+  //   .topoSubShapes('shell', 'SHELL');
 
 
 

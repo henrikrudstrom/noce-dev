@@ -12,3 +12,4 @@ cache/
 ref/
 settings.json
 *.gch
+.diff-test-ref/
