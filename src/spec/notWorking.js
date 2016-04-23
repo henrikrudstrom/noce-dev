@@ -51,6 +51,10 @@ var returnType = {
   },
   'Geom.CylindricalSurface': {
     'viso(Double)': 'Circle'
+  },
+  'Geom.Plane': {
+    'uiso(Double)': 'Line',
+    'viso(Double)': 'Line'
   }
 };
 module.exports.returnType = function(clsName, memberSig) {
