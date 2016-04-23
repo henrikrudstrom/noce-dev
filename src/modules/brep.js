@@ -85,7 +85,7 @@ module.exports = function(mod) {
     .property('Location()', 'Location(TopLoc_Location)');
 
 
-  mod.find('*').camelCase('*');
+  mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
 
   mod.noHandle('*');

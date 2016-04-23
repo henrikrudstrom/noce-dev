@@ -26,7 +26,7 @@ module.exports = function(mod) {
 
 
   mod.find('*').include('*');
-  mod.find('*').camelCase('*');
+  mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
   mod.noHandle('*');
 

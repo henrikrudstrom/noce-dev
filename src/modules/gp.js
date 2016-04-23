@@ -23,7 +23,7 @@ module.exports = function(mod) {
 
 
 
-  mod.find('*').camelCase('*');
+  mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
 
   const trsfs = ['Mirror', 'Rotate', 'Scale', 'Transform', 'Translate', 'Cross', 'CrossCross'];
