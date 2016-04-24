@@ -31,9 +31,10 @@ module.exports = function(mod) {
   mod.includeBRepBuilder('BRepBuilderAPI_MakeFace(TopoDS_*)', 'Face');
   mod.includeBRepBuilder('BRepBuilderAPI_MakeShell(Handle_Geom_*)', 'Shell');
 
-  // mod.find('TopoDS_Edge')
-  //   .topoSubShapes('vertices', 'VERTEX');
+  mod.find('TopoDS_Edge')
+    .topoSubShapes('vertices', 'VERTEX');
 
+  mod.typemap('TopTools_IndexedMapOfShape', 'Array');
   // mod.find('TopoDS_Wire')
   //   .topoSubShapes('vertices', 'VERTEX')
   // mod.find('TopoDS_Wire')
