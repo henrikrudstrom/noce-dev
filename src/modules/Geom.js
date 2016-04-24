@@ -19,9 +19,8 @@ module.exports = function(mod) {
   mod.include('Geom_Circle');
   mod.include('Geom_TrimmedCurve');
   mod.include('Geom_Line');
-  //mod.include('Geom_Curve');
-  //mod.include('Geom_BoundedCurve');
-  //  mod.include('Geom_BezierCurve');
+
+  mod.include('Geom_BezierCurve');
   //mod.include('TColgp_Array1OfPnt');
 
 
@@ -29,7 +28,7 @@ module.exports = function(mod) {
   mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
   mod.noHandle('*');
-
+  mod.typemapArray1Of('TColgp_Array1OfPnt', 'Array', 'gp_Pnt');
 
   mod.find('*')
     .argoutObject('Bounds')
