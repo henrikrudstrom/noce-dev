@@ -129,4 +129,12 @@ describe('brep', function() {
     var map = brep.TopExp.vertices(face);
     console.log(map)
   })
+  it('map shapes', function() {
+    var line = new Geom.Line(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0));
+    var edge = brep.makeEdge(line, -1, 1);
+    console.log(Object.keys(edge))
+    var map = edge.vertices();
+    console.log(map)
+  })
+
 });

@@ -14,8 +14,8 @@ module.exports = function(mod) {
   mod.include('TopoDS_Face');
   mod.include('TopoDS_Shell');
 
-  mod.include('TopExp');
-  mod.include('TopExp_Explorer');
+  //mod.include('TopExp');
+  //mod.include('TopExp_Explorer');
 
   mod.include('BRepPrim_OneAxis');
   mod.include('BRepPrim_Revolution');
@@ -34,7 +34,8 @@ module.exports = function(mod) {
   mod.find('TopoDS_Edge')
     .topoSubShapes('vertices', 'VERTEX');
 
-  mod.typemap('TopTools_IndexedMapOfShape', 'Array');
+  mod.typemapListOf('TopTools_ListOfShape', 'Array', 'TopoDS_Shape');
+  mod.typemapIndexedMap('TopTools_IndexedMapOfShape', 'Array', 'TopoDS_Shape');
   // mod.find('TopoDS_Wire')
   //   .topoSubShapes('vertices', 'VERTEX')
   // mod.find('TopoDS_Wire')

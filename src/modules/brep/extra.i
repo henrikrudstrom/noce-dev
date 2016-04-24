@@ -1,3 +1,11 @@
+%{
+  #include <TCollection.hxx>
+  #include <TCollection_BasicMap.hxx>
+#include<TopTools_IndexedMapOfShape.hxx>
+#include<TopExp_Explorer.hxx>
+#include<TopExp.hxx>
+%}
+
 /*%typemap(in, numinputs=0) TopTools_IndexedMapOfShape& {
    $1 = new TopTools_IndexedMapOfShape();
 }
