@@ -2,6 +2,13 @@ var gp = require('../lib/gp.node');
 var Geom = require('../lib/Geom.node');
 var brep = require('../lib/brep.node');
 
+
+
+
+
+
+
+
 var currentDouble = 0;
 var maxDouble = 29;
 
@@ -83,9 +90,9 @@ var createGeom = {
       new gp.Pnt(1, 2, 3), new gp.Pnt(2, 3, 4),
       new gp.Pnt(3, 4, 5), new gp.Pnt(4, 5, 6)
     ];
-    var arr = new Geom.Array1OfPnt(0, 4);
-    points.forEach((pnt, index) => arr.setValue(index, pnt));
-    //return new Geom.BezierCurve(arr);
+    // var arr = new Geom.Array1OfPnt(0, 4);
+    // points.forEach(points);
+    return new Geom.BezierCurve(points);
   },
   Circle() {
     return new Geom.Circle(creategp.Ax2(), 2);

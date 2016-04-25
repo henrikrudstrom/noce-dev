@@ -6,13 +6,13 @@ module.exports = function(mod) {
   // mod.include('Standard_Type');
   // mod.include('Handle_Standard_Type');
   mod.include('Geom_Geometry');
-  mod.include('Geom_Surface');
-  mod.include('Geom_ElementarySurface');
-  mod.include('Geom_SphericalSurface');
-  mod.include('Geom_CylindricalSurface');
-  mod.include('Geom_Plane');
-  mod.include('Geom_AxisPlacement');
-  mod.include('Geom_Axis1Placement');
+  // mod.include('Geom_Surface');
+  // mod.include('Geom_ElementarySurface');
+  // mod.include('Geom_SphericalSurface');
+  // mod.include('Geom_CylindricalSurface');
+  // mod.include('Geom_Plane');
+  // mod.include('Geom_AxisPlacement');
+  // mod.include('Geom_Axis1Placement');
   mod.include('Geom_Curve');
   mod.include('Geom_Conic');
   mod.include('Geom_BoundedCurve');
@@ -28,7 +28,9 @@ module.exports = function(mod) {
   mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
   mod.noHandle('*');
+  //mod.find('*').defaultArgouts();
   mod.typemapArray1Of('TColgp_Array1OfPnt', 'Array', 'gp_Pnt');
+  mod.typemapArray1Of('TColStd_Array1OfReal', 'Array', 'Standard_Real');
 
   mod.find('*')
     .argoutObject('Bounds')

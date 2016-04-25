@@ -13,3 +13,10 @@ describe('Geom.TrimmedCurve', function() {
     expect(res.constructor.name.replace('_exports_', '')).toBe('TrimmedCurve');
   });
 });
+describe('Geom.BezierCurve', function(){
+  it('poles(Array)', function(){
+    var obj = create.Geom.BezierCurve();
+    var res = obj.poles();
+    console.log(res);
+  });
+})

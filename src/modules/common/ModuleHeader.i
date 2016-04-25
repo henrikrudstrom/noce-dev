@@ -18,8 +18,11 @@
 /*%include ../common/FunctionTransformers.i*/
 %include Operators.i
 
-
+%{
 // TODO: seems wasteful to compile this in for every module...
+
+
+%}
 typedef double Standard_Real;
 typedef int Standard_Integer;
 typedef bool Standard_Boolean;
