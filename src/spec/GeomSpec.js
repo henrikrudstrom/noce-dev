@@ -39,7 +39,7 @@ describe('Geom.BezierCurve', function(){
         new gp.Pnt(1, 2, 3), new gp.Pnt(2, 3, 4),
         new gp.Pnt(3, 4, 5), new gp.Pnt(4, 5, 6)
       ];
-      var weights = [1.0, 1.0, 1.0, 1.0, 1.0];
+      var weights = [0.1, 0.2, 0.2, 0.1];
       console.log('BezierCurve(Array)')
       var res = new Geom.BezierCurve(points, weights);
       helpers.expectType(res, 'BezierCurve');

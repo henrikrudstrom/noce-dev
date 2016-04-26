@@ -25,7 +25,7 @@ module.exports = function(mod) {
     .argoutObject('GetRotation');
 
 
-
+//mod.find('*').defaultArgouts();
   mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
 

@@ -23,7 +23,8 @@ module.exports = function(mod) {
   mod.include('Geom_BezierCurve');
   //mod.include('TColgp_Array1OfPnt');
 
-
+  mod.find('Geom_BezierCurve').extend({lengthProperty:'NbPoles()'});
+  
   mod.find('*').include('*');
   mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
