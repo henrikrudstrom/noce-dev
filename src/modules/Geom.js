@@ -28,7 +28,7 @@ module.exports = function(mod) {
   mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
   mod.noHandle('*');
-  //mod.find('*').defaultArgouts();
+  mod.find('*').defaultArgouts();
   mod.typemapArray1Of('TColgp_Array1OfPnt', 'Array', 'gp_Pnt');
   mod.typemapArray1Of('TColStd_Array1OfReal', 'Array', 'Standard_Real');
 

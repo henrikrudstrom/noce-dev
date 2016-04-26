@@ -14,9 +14,36 @@ describe('Geom.TrimmedCurve', function() {
   });
 });
 describe('Geom.BezierCurve', function(){
-  it('poles(Array)', function(){
+  xit('poles(Array)', function(){
     var obj = create.Geom.BezierCurve();
     var res = obj.poles();
     console.log(res);
   });
+    var helpers = require('./brep/testHelpers.js');
+
+    it('BezierCurve(Array)', function() {
+      var points = [
+        new gp.Pnt(1, 2, 3), new gp.Pnt(2, 3, 4),
+        new gp.Pnt(3, 4, 5), new gp.Pnt(4, 5, 6)
+      ];
+      console.log('BezierCurve(Array)')
+      var res = new Geom.BezierCurve(points);
+      helpers.expectType(res, 'BezierCurve');
+      expect(res.nbPoles()).toBe(4);
+      //console.log("WEIGHTS", res.weights());
+    });
+
+
+    it('BezierCurve(Array, Array)', function() {
+      var points = [
+        new gp.Pnt(1, 2, 3), new gp.Pnt(2, 3, 4),
+        new gp.Pnt(3, 4, 5), new gp.Pnt(4, 5, 6)
+      ];
+      var weights = [1.0, 1.0, 1.0, 1.0, 1.0];
+      console.log('BezierCurve(Array)')
+      var res = new Geom.BezierCurve(points, weights);
+      helpers.expectType(res, 'BezierCurve');
+      expect(res.nbPoles()).toBe(4);
+
+    });
 })

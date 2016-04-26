@@ -109,32 +109,60 @@ describe('brep', function() {
     expect(res.constructor.name.replace('_exports_', '')).toBe('Face');
   });
 
-  it('makeShell(Geom.Surface, Boolean)', function() {
+  xit('makeShell(Geom.Surface, Boolean)', function() {
     var res = brep.makeShell(create.Geom.SphericalSurface(), false);
     expect(typeof res).toBe('object');
     expect(res.constructor.name.replace('_exports_', '')).toBe('Shell');
   });
 
 
-  it('makeShell(Geom.Surface, Double, Double, Double, Double, Boolean)', function() {
+  xit('makeShell(Geom.Surface, Double, Double, Double, Double, Boolean)', function() {
     var res = brep.makeShell(create.Geom.SphericalSurface(), 0, 1, 0, 1, false);
     expect(typeof res).toBe('object');
     expect(res.constructor.name.replace('_exports_', '')).toBe('Shell');
   });
 
-  it('map shapes', function() {
+  xit('map shapes', function() {
     var ax2 = new gp.Ax3(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0), new gp.Dir(0, 0, 1));
     var plane = new Geom.Plane(ax2);
     var face = brep.makeFace(plane, -1, 1, -1, 1, 0.01);
     var map = brep.TopExp.vertices(face);
     console.log(map)
   })
-  it('map shapes', function() {
+  xit('map shapes', function() {
     var line = new Geom.Line(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0));
     var edge = brep.makeEdge(line, -1, 1);
     console.log(Object.keys(edge))
     var map = edge.vertices();
     console.log(map)
   })
+  var helpers = require('./brep/testHelpers.js');
+
+  it('BezierCurve(Array)', function() {
+    var points = [
+      new gp.Pnt(1, 2, 3), new gp.Pnt(2, 3, 4),
+      new gp.Pnt(3, 4, 5), new gp.Pnt(4, 5, 6)
+    ];
+    console.log('BezierCurve(Array)')
+    var res = new Geom.BezierCurve(points);
+    helpers.expectType(res, 'BezierCurve');
+    expect(res.nbPoles()).toBe(4);
+    //console.log("WEIGHTS", res.weights());
+  });
+
+
+  xit('BezierCurve(Array, Array)', function() {
+    var points = [
+      new gp.Pnt(1, 2, 3), new gp.Pnt(2, 3, 4),
+      new gp.Pnt(3, 4, 5), new gp.Pnt(4, 5, 6)
+    ];
+    var weights = [1.0, 1.0, 1.0, 1.0, 1.0];
+    console.log('BezierCurve(Array)')
+    var res = new Geom.BezierCurve(points, weights);
+    helpers.expectType(res, 'BezierCurve');
+    expect(res.nbPoles()).toBe(4);
+
+  });
+
 
 });
