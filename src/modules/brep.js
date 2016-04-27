@@ -71,7 +71,7 @@ module.exports = function(mod) {
     .rename('Orientation(TopAbs_Orientation)', 'SetOrientation');
 
   mod.find('TopoDS_*')
-    .exclude((decl) => decl.cls === 'constructor');
+    .exclude((decl) => decl.declType === 'constructor');
 
   mod.find('TopoDS_Shape')
     .property('Free()', 'Free(Standard_Boolean)')
