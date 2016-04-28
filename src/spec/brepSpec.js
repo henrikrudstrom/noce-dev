@@ -2,6 +2,8 @@ var brep = require('../lib/brep.node');
 var Geom = require('../lib/Geom.node');
 var gp = require('../lib/gp.node');
 var create = require('./create.js')
+var helpers = require('./brep/testHelpers.js');
+
 describe('brep', function() {
   it('makeEdge(Geom.Curve)', function() {
     // console.log('makeEdge(Geom.Curve)')
@@ -122,21 +124,13 @@ describe('brep', function() {
     expect(res.constructor.name.replace('_exports_', '')).toBe('Shell');
   });
 
-  xit('map shapes', function() {
-    var ax2 = new gp.Ax3(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0), new gp.Dir(0, 0, 1));
-    var plane = new Geom.Plane(ax2);
-    var face = brep.makeFace(plane, -1, 1, -1, 1, 0.01);
-    var map = brep.TopExp.vertices(face);
-    console.log(map)
-  })
-  xit('map shapes', function() {
-    var line = new Geom.Line(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0));
-    var edge = brep.makeEdge(line, -1, 1);
-    console.log(Object.keys(edge))
-    var map = edge.vertices();
-    console.log(map)
-  })
-  var helpers = require('./brep/testHelpers.js');
+
+
+
+
+
+
+
 
   it('BezierCurve(Array)', function() {
     var points = [
@@ -163,6 +157,42 @@ describe('brep', function() {
     expect(res.nbPoles()).toBe(4);
 
   });
-
-
 });
+
+describe('brep.TopExp', function() {
+  xit('map shapes', function() {
+    var ax2 = new gp.Ax3(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0), new gp.Dir(0, 0, 1));
+    var plane = new Geom.Plane(ax2);
+    var face = brep.makeFace(plane, -1, 1, -1, 1, 0.01);
+    var map = brep.TopExp.vertices(face);
+    console.log(map)
+  })
+  xit('map shapes', function() {
+    var line = new Geom.Line(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0));
+    var edge = brep.makeEdge(line, -1, 1);
+    console.log(Object.keys(edge))
+    var map = edge.vertices();
+    console.log(map)
+  })
+
+
+  it('mapShapes(brep.Shape, brep.ShapeEnum, Array)', function() {
+    console.log('mapShapes(brep.Shape, brep.ShapeEnum, Array)')
+    var line = new Geom.Line(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0));
+    var edge = brep.makeEdge(line, -1, 1);
+    var res = brep.TopExp.mapShapes(edge, 7);
+    console.log(res);
+    helpers.expectType(res, 'Array');
+  });
+
+
+  it('mapShapes(brep.Shape, Array)', function() {
+    console.log('mapShapes(brep.Shape, Array)')
+    var ax2 = new gp.Ax3(new gp.Pnt(0, 0, 0), new gp.Dir(0, 1, 0), new gp.Dir(0, 0, 1));
+    var plane = new Geom.Plane(ax2);
+    var face = brep.makeFace(plane, -1, 1, -1, 1, 0.01);
+    var res = brep.TopExp.mapShapes(face, 7);
+    console.log(res);
+    helpers.expectType(res, 'Array');
+  });
+})

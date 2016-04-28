@@ -6,7 +6,7 @@ module.exports = function(mod) {
 
   mod.include('TopLoc_Location');
   mod.include('TopAbs_Orientation');
-  mod.include('TopAbs_Shape');
+  mod.include('TopAbs_ShapeEnum');
   mod.include('TopoDS_Shape');
   mod.include('TopoDS_Vertex');
   mod.include('TopoDS_Edge');
@@ -14,7 +14,6 @@ module.exports = function(mod) {
   mod.include('TopoDS_Face');
   mod.include('TopoDS_Shell');
 
-  //mod.include('TopExp');
   //mod.include('TopExp_Explorer');
 
   mod.include('BRepPrim_OneAxis');
@@ -23,6 +22,8 @@ module.exports = function(mod) {
 
 
   mod.find('*').include('*');
+  mod.include('TopExp');
+  mod.find('TopExp').include('MapShapes');
 
   mod.includeBRepBuilder('BRepBuilderAPI_MakeEdge(Handle_Geom_*)', 'Edge');
   mod.includeBRepBuilder('BRepBuilderAPI_MakeVertex(*)', 'Vertex');
@@ -31,8 +32,11 @@ module.exports = function(mod) {
   mod.includeBRepBuilder('BRepBuilderAPI_MakeFace(TopoDS_*)', 'Face');
   mod.includeBRepBuilder('BRepBuilderAPI_MakeShell(Handle_Geom_*)', 'Shell');
 
-  mod.find('TopoDS_Edge')
-    .topoSubShapes('vertices', 'VERTEX');
+  mod.find('*').exclude('*(*Standard_OStream)');
+  mod.find('*').defaultArgouts();
+
+  // mod.find('TopoDS_Edge')
+  //   .topoSubShapes('vertices', 'VERTEX');
 
   mod.typemapListOf('TopTools_ListOfShape', 'Array', 'TopoDS_Shape');
   mod.typemapIndexedMap('TopTools_IndexedMapOfShape', 'Array', 'TopoDS_Shape');

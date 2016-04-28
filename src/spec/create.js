@@ -118,7 +118,10 @@ var createbrep = {
     return createbrep.Edge();
   },
   Orientation() {
-    return brep.Orientation.TopAbs_FORWARD;
+    return 1;
+  },
+  ShapeEnum() {
+    return 7;
   },
   Location() {
     return new brep.Location(creategp.Trsf());

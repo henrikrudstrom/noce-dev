@@ -5,7 +5,8 @@ var notWorking = {
   ],
   'Geom.CylindricalSurface': [
     'vperiod()',
-    'uiso(Double)' // Works on spherical... segmentation fault
+    'uiso(Double)', // Works on spherical... segmentation fault
+    'transformParameters(Double, Double, gp.Trsf)'
   ],
   'Geom.SphericalSurface': [
     'vperiod()'
@@ -14,13 +15,18 @@ var notWorking = {
     'makeCircle(gp.Pnt, gp.Pnt, gp.Pnt)'
   ],
   'Geom.TrimmedCurve': [
-    'makeArcOfCircle(gp.Pnt, gp.Pnt, gp.Pnt)'
+    'makeArcOfCircle(gp.Pnt, gp.Pnt, gp.Pnt)',
+    'setTrim(Double, Double, Boolean)'
   ],
   'Geom.Line': [
     'period()'
   ],
   'Geom.Plane': [
-    'uperiod()', 'vperiod()'
+    'uperiod()', 'vperiod()',
+    'transformParameters(Double, Double, gp.Trsf)'
+  ],
+  'Geom.BezierCurve': [
+    'increase(Integer)'
   ],
   'brep.Cone': [
     'startTopEdge()'

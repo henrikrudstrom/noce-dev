@@ -4,7 +4,19 @@
 #include<TopTools_IndexedMapOfShape.hxx>
 #include<TopExp_Explorer.hxx>
 #include<TopExp.hxx>
+#include <sstream>
+#include <string>
+#include <iostream>
+#include <ostream>
+#include <ios>
+
 %}
+
+
+/*%typemap(in) TopAbs_Orientation (double val){
+  SWIG_AsVal_double($1, &val);
+}*/
+
 
 /*%typemap(in, numinputs=0) TopTools_IndexedMapOfShape& {
    $1 = new TopTools_IndexedMapOfShape();

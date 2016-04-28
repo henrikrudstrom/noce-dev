@@ -19,13 +19,11 @@ module.exports = function(mod) {
     .property('X', 'SetX')
     .property('Y', 'SetY')
     .property('Z', 'SetZ');
-  mod.rename('')
+  mod.rename('');
   mod.get('gp_Trsf')
-    .rename('GetRotation(gp_XYZ, Standard_Real)', 'getAxisAngle')
-    .argoutObject('GetRotation');
+    .rename('GetRotation(gp_XYZ, Standard_Real)', 'getAxisAngle');
 
-
-//mod.find('*').defaultArgouts();
+  mod.find('*').defaultArgouts();
   mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
 
