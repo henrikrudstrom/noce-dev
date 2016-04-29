@@ -1,7 +1,6 @@
 var notWorking = {
   'gp.Trsf': [
-    'transforms(Double, Double, Double)',
-    'setValues(Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double)'
+    'transforms(gp.Vec)' //should not be wrapped
   ],
   'Geom.CylindricalSurface': [
     'vperiod()',
@@ -16,7 +15,8 @@ var notWorking = {
   ],
   'Geom.TrimmedCurve': [
     'makeArcOfCircle(gp.Pnt, gp.Pnt, gp.Pnt)',
-    'setTrim(Double, Double, Boolean)'
+    'setTrim(Double, Double, Boolean)',
+    'transformedParameter(Double, gp.Trsf)'
   ],
   'Geom.Line': [
     'period()'
@@ -35,7 +35,8 @@ var notWorking = {
     'startTopEdge()'
   ],
   'brep.Revolution': [
-    'startTopEdge()'
+    'startTopEdge()',
+    'setMeridianPcurve(brep.Edge, brep.Face)'
   ]
 };
 
