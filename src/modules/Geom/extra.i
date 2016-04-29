@@ -10,3 +10,4 @@
 class TColgp_Array1OfPnt;
 class TColStd_Array1OfReal;
 %}
+%newobject Geom_BezierCurve::Poles;

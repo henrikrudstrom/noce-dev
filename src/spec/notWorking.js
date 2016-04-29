@@ -26,7 +26,8 @@ var notWorking = {
     'transformParameters(Double, Double, gp.Trsf)'
   ],
   'Geom.BezierCurve': [
-    'increase(Integer)'
+    'increase(Integer)',
+    'poles(Array)' // TODO: array outarg typemap for Array1Of has memory trouble
   ],
   'brep.Cone': [
     'startTopEdge()'
