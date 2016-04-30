@@ -6,7 +6,6 @@
 #include<Standard_DimensionMismatch.hxx>
 #include<Standard_OutOfRange.hxx>
 #include<Standard_OutOfMemory.hxx>
-#include<TCollection_Array1Descriptor.hxx>
 class TColgp_Array1OfPnt;
 class TColStd_Array1OfReal;
 %}

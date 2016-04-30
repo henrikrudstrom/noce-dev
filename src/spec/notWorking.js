@@ -27,7 +27,7 @@ var notWorking = {
   ],
   'Geom.BezierCurve': [
     'increase(Integer)',
-    'poles(Array)' // TODO: array outarg typemap for Array1Of has memory trouble
+    //'poles(Array)' // TODO: array outarg typemap for Array1Of has memory trouble
   ],
   'brep.Cone': [
     'startTopEdge()'

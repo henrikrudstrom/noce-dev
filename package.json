@@ -27,6 +27,7 @@
     "gulp": "^3.9.1",
     "gulp-coverage": "^0.3.38",
     "gulp-coveralls": "^0.1.4",
+    "gulp-if": "^2.0.0",
     "nan": "^2.2.1",
     "yargs": "^4.3.2"
   }

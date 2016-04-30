@@ -34,6 +34,4 @@ module.exports = function(mod) {
       .exclude(trsf)
       .rename(self, camelCase(trsf));
   });
-
-
 };
