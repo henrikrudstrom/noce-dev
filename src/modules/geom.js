@@ -1,6 +1,5 @@
-const camelCase = require('camel-case');
 module.exports = function(mod) {
-  mod.name = 'Geom';
+  mod.name = 'geom';
   mod.depends('gp');
 
   mod.include('Geom_Geometry');

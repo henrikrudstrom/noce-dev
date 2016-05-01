@@ -1,5 +1,5 @@
-const brep = require('../lib/brep.js');
-const Geom = require('../lib/Geom.js');
+const topo = require('../lib/topo.js');
+const geom = require('../lib/geom.js');
 const gp = require('../lib/gp.js');
 const mesh = require('../lib/mesh.js');
 const expect = require('chai').expect;
@@ -17,35 +17,35 @@ function checkMesh(mesh) {
 
 describe('mesh', function() {
   it('can tesselate a plane', function() {
-    var geom = new Geom.Plane(new gp.Ax3(new gp.Pnt(), new gp.Dir(0, 0, 1), new gp.Dir(1, 0, 0)));
-    var face = brep.makeFace(geom, 0, 1, 0, 1, 0.01);
+    var plane = new geom.Plane(new gp.Ax3(new gp.Pnt(), new gp.Dir(0, 0, 1), new gp.Dir(1, 0, 0)));
+    var face = topo.makeFace(plane, 0, 1, 0, 1, 0.01);
     var res = mesh(face, 5, 20, false);
-    
+
     checkMesh(res);
     expect(res.vertices.length).to.equal(12);
     expect(res.normals.length).to.equal(12);
     expect(res.triangles.length).to.equal(6);
   });
-  
+
   it('can tesselate a Sphere', function() {
-    var geom = new Geom.SphericalSurface(
+    var sphere = new geom.SphericalSurface(
       new gp.Ax3(new gp.Pnt(), new gp.Dir(0, 0, 1), new gp.Dir(1, 0, 0)), 2
     );
-    
-    var face = brep.makeFace(geom, 0, 3.14, 0, 3.14, 0.01);
+
+    var face = topo.makeFace(sphere, 0, 3.14, 0, 3.14, 0.01);
     var res = mesh(face, 0.005, 20, false);
-    
+
     checkMesh(res);
   });
-  
+
   it('can tesselate a cylinder', function() {
-    var geom = new Geom.CylindricalSurface(
+    var cylinder = new geom.CylindricalSurface(
       new gp.Ax3(new gp.Pnt(), new gp.Dir(0, 0, 1), new gp.Dir(1, 0, 0)), 2
     );
-    
-    var face = brep.makeFace(geom, 0, 3.14, 0, 3.14, 0.01);
+
+    var face = topo.makeFace(cylinder, 0, 3.14, 0, 3.14, 0.01);
     var res = mesh(face, 0.005, 20, false);
-    
+
     checkMesh(res);
   });
 });

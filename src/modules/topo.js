@@ -1,7 +1,7 @@
 const camelCase = require('camel-case');
 module.exports = function(mod) {
-  mod.name = 'brep';
-  mod.depends('Geom');
+  mod.name = 'topo';
+  mod.depends('geom');
   mod.depends('gp');
 
   mod.include('TopLoc_Location');
@@ -16,21 +16,25 @@ module.exports = function(mod) {
 
   //mod.include('TopExp_Explorer');
 
-  mod.include('BRepPrim_OneAxis');
-  mod.include('BRepPrim_Revolution');
-  mod.include('BRepPrim_Cone');
+  // mod.include('BRepPrim_OneAxis');
+  // mod.include('BRepPrim_Revolution');
+  // mod.include('BRepPrim_Cone');
 
+  mod.upcast('TopoDS_Shape', 'upcastTopoDS');
 
   mod.find('*').include('*');
   mod.include('TopExp');
   mod.find('TopExp').include('MapShapes');
 
-  mod.includeBRepBuilder('BRepBuilderAPI_MakeEdge(Handle_Geom_*)', 'Edge');
-  mod.includeBRepBuilder('BRepBuilderAPI_MakeVertex(*)', 'Vertex');
-  mod.includeBRepBuilder('BRepBuilderAPI_MakeWire(*)', 'Wire');
-  mod.includeBRepBuilder('BRepBuilderAPI_MakeFace(Handle_Geom_*)', 'Face');
-  mod.includeBRepBuilder('BRepBuilderAPI_MakeFace(TopoDS_*)', 'Face');
-  mod.includeBRepBuilder('BRepBuilderAPI_MakeShell(Handle_Geom_*)', 'Shell');
+  mod.includeAsStatic('BRepBuilderAPI_MakeEdge(Handle_Geom_*)', 'BRepBuilder', 'Edge');
+  mod.includeAsStatic('BRepBuilderAPI_MakeVertex(*)', 'BRepBuilder', 'Vertex');
+  mod.includeAsStatic('BRepBuilderAPI_MakeWire(*)', 'BRepBuilder', 'Wire');
+  mod.includeAsStatic('BRepBuilderAPI_MakeFace(Handle_Geom_*)', 'BRepBuilder', 'Face');
+  mod.includeAsStatic('BRepBuilderAPI_MakeFace(TopoDS_*)', 'BRepBuilder', 'Face');
+  mod.includeAsStatic('BRepBuilderAPI_MakeShell(Handle_Geom_*)', 'BRepBuilder', 'Shell');
+
+  // mod.includeAsStatic('BRepPrimAPI_MakeCone(*)', 'BRepPrim', 'Cone');
+  // mod.includeBRepBuilder('BRepBuilderAPI_MakeShell(Handle_Geom_*)', 'Shell');
 
   mod.find('*').exclude('*(*Standard_OStream)');
   mod.find('*').defaultArgouts();

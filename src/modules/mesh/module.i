@@ -13,7 +13,7 @@
 %include attribute.i
 
 %include ../common/ExceptionCatcher.i
-%include "../brep/headers.i"
+%include "../topo/headers.i"
 
 %{
 #include<Mesh.h>
@@ -22,7 +22,7 @@
 #include <BRepMesh_IncrementalMesh.hxx>
 %}
 
-%import "../brep/module.i"
+%import "../topo/module.i"
 
 %typemap(out) v8::Local<v8::Object> {
   $result = $1;

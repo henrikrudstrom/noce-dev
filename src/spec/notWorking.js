@@ -2,42 +2,43 @@ var notWorking = {
   'gp.Trsf': [
     'transforms(gp.Vec)' //should not be wrapped
   ],
-  'Geom.CylindricalSurface': [
+  'geom.CylindricalSurface': [
     'vperiod()',
     'uiso(Double)', // Works on spherical... segmentation fault
     'transformParameters(Double, Double, gp.Trsf)'
   ],
-  'Geom.SphericalSurface': [
+  'geom.SphericalSurface': [
     'vperiod()'
   ],
-  'Geom.Circle': [
+  'geom.Circle': [
     'makeCircle(gp.Pnt, gp.Pnt, gp.Pnt)'
   ],
-  'Geom.TrimmedCurve': [
+  'geom.TrimmedCurve': [
     'makeArcOfCircle(gp.Pnt, gp.Pnt, gp.Pnt)',
     'setTrim(Double, Double, Boolean)',
     'transformedParameter(Double, gp.Trsf)'
   ],
-  'Geom.Line': [
+  'geom.Line': [
     'period()'
   ],
-  'Geom.Plane': [
+  'geom.Plane': [
     'uperiod()', 'vperiod()',
     'transformParameters(Double, Double, gp.Trsf)'
   ],
-  'Geom.BezierCurve': [
+  'geom.BezierCurve': [
     'increase(Integer)',
     //'poles(Array)' // TODO: array outarg typemap for Array1Of has memory trouble
   ],
-  'brep.Cone': [
+  'topo.Cone': [
     'startTopEdge()'
   ],
-  'brep.OneAxis': [
+  'topo.OneAxis': [
     'startTopEdge()'
   ],
-  'brep.Revolution': [
+  'primitives.Revolution': [
     'startTopEdge()',
-    'setMeridianPcurve(brep.Edge, brep.Face)'
+    // TODO: first arg is outarg or 'const &'
+    'setMeridianPcurve(topo.Edge, topo.Face)'
   ]
 };
 
@@ -48,19 +49,19 @@ module.exports.notWorking = function(clsName, memberSig) {
 };
 
 var returnType = {
-  'Geom.TrimmedCurve': {
+  'geom.TrimmedCurve': {
     'basisCurve()': 'Circle',
 
   },
-  'Geom.SphericalSurface': {
+  'geom.SphericalSurface': {
     'vperiod()': 'Circle',
     'viso(Double)': 'Circle',
     'uiso(Double)': 'TrimmedCurve'
   },
-  'Geom.CylindricalSurface': {
+  'geom.CylindricalSurface': {
     'viso(Double)': 'Circle'
   },
-  'Geom.Plane': {
+  'geom.Plane': {
     'uiso(Double)': 'Line',
     'viso(Double)': 'Line'
   }
