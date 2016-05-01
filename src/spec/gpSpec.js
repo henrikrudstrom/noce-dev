@@ -12,7 +12,6 @@ describe('gp.Dir', function() {
     var obj = new gp.Dir(1, 0, 0);
     var res = obj.cross(new gp.Dir(0, 1, 0));
     helpers.expectType(res, 'Dir');
-
   });
 
   it('crossCross(gp.Dir, gp.Dir)', function() {
@@ -47,8 +46,8 @@ describe('gp.Ax3', function() {
 });
 
 describe('gp.Trsf', function() {
-  it('setValues(Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double)', function(){
+  it('setValues(Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double)', function(){
     var obj = new gp.Trsf();
-    var res = obj.setValues(1,0,0,0, 0,1,0,0, 0,0,1,0, 1,1);
+    var res = obj.setValues(1,0,0,0, 0,1,0,0, 0,0,1,0);
   });
 })
