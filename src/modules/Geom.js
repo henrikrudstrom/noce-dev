@@ -29,8 +29,8 @@ module.exports = function(mod) {
   mod.noHandle('*');
   mod.find('*').defaultArgouts();
   // TODO: this one causes segfaults
-  mod.typemapArray1Of('TColgp_Array1OfPnt', 'Array', 'gp_Pnt');
-  mod.typemapArray1Of('TColStd_Array1OfReal', 'Array', 'Standard_Real');
+  mod.typemapArray1('TColgp', 'gp_Pnt');
+  mod.typemapArray1('TColStd', 'Standard_Real');
 
   mod.find('*').downCastToThis('Scaled');
   mod.find('*').downCastToThis('Transformed');

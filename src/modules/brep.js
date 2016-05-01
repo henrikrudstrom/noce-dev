@@ -38,8 +38,8 @@ module.exports = function(mod) {
   // mod.find('TopoDS_Edge')
   //   .topoSubShapes('vertices', 'VERTEX');
 
-  mod.typemapListOf('TopTools_ListOfShape', 'Array', 'TopoDS_Shape');
-  mod.typemapIndexedMap('TopTools_IndexedMapOfShape', 'Array', 'TopoDS_Shape');
+  mod.typemapList('TopTools', 'TopoDS_Shape');
+  mod.typemapIndexedMap('TopTools', 'TopoDS_Shape');
   // mod.find('TopoDS_Wire')
   //   .topoSubShapes('vertices', 'VERTEX')
   // mod.find('TopoDS_Wire')
