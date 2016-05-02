@@ -1,4 +1,3 @@
-const camelCase = require('camel-case');
 module.exports = function(mod) {
   mod.name = 'primitives';
   mod.depends('gp');

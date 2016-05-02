@@ -22,7 +22,9 @@ module.exports = function(mod) {
 
   mod.find('Geom_BezierCurve').extend({ lengthProperty: 'NbPoles()' });
 
-  mod.find('*').include('*');
+  mod.find('*')
+    .include('*')
+    .exclude('DynamicType');
   mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
   mod.noHandle('*');
