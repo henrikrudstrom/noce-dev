@@ -1,7 +1,7 @@
 const camelCase = require('camel-case');
 module.exports = function(mod) {
   mod.name = 'gp';
-  mod.typemap('gp_XYZ', 'gp_Vec', 'member-object');
+  // mod.typemap('gp_XYZ', 'gp_Vec', 'member-object');
 
   mod.include('gp_Pnt');
   mod.include('gp_Vec');

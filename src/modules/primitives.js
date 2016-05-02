@@ -5,13 +5,18 @@ module.exports = function(mod) {
   mod.depends('geom');
   mod.depends('topo');
 
-  mod.include('BRepPrim_OneAxis');
-  mod.include('BRepPrim_Revolution');
-  mod.include('BRepPrim_Cone');
+  mod.includeBRepPrim('BRepPrimAPI_MakeBox(*)');
+  mod.includeBRepPrim('BRepPrimAPI_MakeCone(*)');
+  mod.includeBRepPrim('BRepPrimAPI_MakeCylinder(*)');
+  mod.includeBRepPrim('BRepPrimAPI_MakeHalfSpace(*)');
+  mod.includeBRepPrim('BRepPrimAPI_MakePrism(*)');
+  mod.includeBRepPrim('BRepPrimAPI_MakeRevol(*)');
+  mod.includeBRepPrim('BRepPrimAPI_MakeSphere(*)');
+  mod.includeBRepPrim('BRepPrimAPI_MakeTorus(*)');
+  mod.includeBRepPrim('BRepPrimAPI_MakeWedge(*)');
 
-  mod.find('*').include('*');
 
-  mod.includeAsStatic('BRepPrimAPI_MakeCone(*)', 'BRepPrim', 'Cone');
+  mod.upcast('TopoDS_Shape', 'upcastTopoDS');
 
   mod.find('*').defaultArgouts();
   mod.find('*').renameCamelCase('*');

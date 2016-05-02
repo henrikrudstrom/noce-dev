@@ -50,7 +50,7 @@ module.exports.notWorking = function(clsName, memberSig) {
 
 var returnType = {
   'geom.TrimmedCurve': {
-    'basisCurve()': 'Circle',
+    'basisCurve()': 'Circle'
 
   },
   'geom.SphericalSurface': {

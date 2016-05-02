@@ -1,4 +1,3 @@
-const camelCase = require('camel-case');
 module.exports = function(mod) {
   mod.name = 'topo';
   mod.depends('geom');
@@ -13,12 +12,7 @@ module.exports = function(mod) {
   mod.include('TopoDS_Wire');
   mod.include('TopoDS_Face');
   mod.include('TopoDS_Shell');
-
-  //mod.include('TopExp_Explorer');
-
-  // mod.include('BRepPrim_OneAxis');
-  // mod.include('BRepPrim_Revolution');
-  // mod.include('BRepPrim_Cone');
+  mod.include('TopoDS_Solid');
 
   mod.upcast('TopoDS_Shape', 'upcastTopoDS');
 
@@ -32,9 +26,6 @@ module.exports = function(mod) {
   mod.includeAsStatic('BRepBuilderAPI_MakeFace(Handle_Geom_*)', 'BRepBuilder', 'Face');
   mod.includeAsStatic('BRepBuilderAPI_MakeFace(TopoDS_*)', 'BRepBuilder', 'Face');
   mod.includeAsStatic('BRepBuilderAPI_MakeShell(Handle_Geom_*)', 'BRepBuilder', 'Shell');
-
-  // mod.includeAsStatic('BRepPrimAPI_MakeCone(*)', 'BRepPrim', 'Cone');
-  // mod.includeBRepBuilder('BRepBuilderAPI_MakeShell(Handle_Geom_*)', 'Shell');
 
   mod.find('*').exclude('*(*Standard_OStream)');
   mod.find('*').defaultArgouts();
@@ -65,14 +56,6 @@ module.exports = function(mod) {
   //   .topoSubShapes('faces', 'FACE')
   //   .topoSubShapes('wires', 'WIRE')
   //   .topoSubShapes('shell', 'SHELL');
-
-
-
-
-
-
-
-
 
   mod.find('TopoDS_Shape')
     .rename('Location(TopLoc_Location)', 'SetLocation')
