@@ -11,6 +11,12 @@ module.exports = function(mod) {
   mod.include('gp_Ax3');
   mod.include('gp_Trsf');
 
+  mod.include('gp_Pnt2d');
+  mod.include('gp_Vec2d');
+  mod.include('gp_Dir2d');
+  mod.include('gp_Ax2d');
+  mod.include('gp_Ax22d');
+  mod.include('gp_Trsf2d');
 
   mod.find('*').include('*');
   mod.find('*').exclude('_*');

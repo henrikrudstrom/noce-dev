@@ -1,6 +1,7 @@
 var gp = require('../../lib/gp.js');
 
 var currentDouble = 0;
+
 function nextDouble() {
   currentDouble += 1;
   return currentDouble;
@@ -36,6 +37,29 @@ var create = {
   },
   trsf() {
     return new gp.Trsf();
+  },
+  vec2d() {
+    return new gp.Vec2d(nextDouble(), nextDouble());
+  },
+  pnt2d() {
+    return new gp.Pnt2d(nextDouble(), nextDouble());
+  },
+  dir2d() {
+    return new gp.Dir2d(nextDouble(), nextDouble());
+  },
+  ax2d() {
+    return new gp.Ax2d(
+      create.pnt2d(), create.dir2d()
+    );
+  },
+  ax22d() {
+    return new gp.Ax22d(
+      create.pnt2d(), new gp.Dir2d(1, 0), new gp.Dir2d(0, 1)
+    );
+  },
+
+  trsf2d() {
+    return new gp.Trsf2d();
   }
 };
 
