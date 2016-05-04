@@ -26,6 +26,13 @@ module.exports = function(mod) {
   mod.includeAsStatic('BRepBuilderAPI_MakeFace(Handle_Geom_*)', 'BRepBuilder', 'Face');
   mod.includeAsStatic('BRepBuilderAPI_MakeFace(TopoDS_*)', 'BRepBuilder', 'Face');
   mod.includeAsStatic('BRepBuilderAPI_MakeShell(Handle_Geom_*)', 'BRepBuilder', 'Shell');
+  mod.includeAsStatic('BRepBuilderAPI_MakeSolid(TopoDS_*)', 'BRepBuilder', 'Solid');
+  //mod.includeAsStatic('BRepBuilderAPI_Transform(TopoDS_*)', 'BRepBuilder', 'Shape');
+
+  //mod.includeBRepPrim('BRepPrimAPI_MakeBox(*)');
+  // mod.includeBRepPrim('BRepPrimAPI_MakeCone(*)');
+  // mod.includeBRepPrim('BRepPrimAPI_MakeCylinder(*)');
+  // mod.includeBRepPrim('BRepPrimAPI_MakeHalfSpace(*)');
 
   mod.find('*').exclude('*(*Standard_OStream)');
   mod.find('*').defaultArgouts();

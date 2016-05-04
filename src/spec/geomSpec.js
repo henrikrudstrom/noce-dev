@@ -1,5 +1,5 @@
-var geom = require('../lib/geom.node');
-var gp = require('../lib/gp.node');
+var geom = require('../lib/geom.js');
+var gp = require('../lib/gp.js');
 var create = require('./create.js');
 var helpers = require('./testHelpers.js');
 const expect = require('chai').expect;

@@ -1,8 +1,54 @@
-const topo = require('../lib/topo.node');
-const geom = require('../lib/geom.node');
-const gp = require('../lib/gp.node');
+const primitives = require('../lib/primitives.js')
+const topo = require('../lib/topo.js');
+const geom = require('../lib/geom.js');
+const gp = require('../lib/gp.js');
 const create = require('./create.js')
 const helpers = require('./testHelpers.js');
+const expect = require('chai').expect;
+
+
+describe('topo.Solid', function() {
+  beforeEach(function() {
+    this.box = primitives.makeBox(1, 2, 3);
+  });
+  it('can access vertices', function() {
+    var vertices = this.box.vertices();
+    expect(vertices.length).to.equal(8);
+    helpers.expectType(vertices[0], 'Vertex');
+  });
+  it('can access edges', function() {
+    var edges = this.box.edges();
+    expect(edges.length).to.equal(12);
+    helpers.expectType(edges[0], 'Edge');
+    var vertices = edges[0].vertices();
+    expect(vertices.length).to.equal(2);
+  });
+  it('can access wires', function() {
+    var wires = this.box.wires();
+    expect(wires.length).to.equal(6);
+    helpers.expectType(wires[0], 'Wire');
+    var edges = wires[0].edges();
+    expect(edges.length).to.equal(4);
+    var vertices = edges[0].vertices();
+    expect(vertices.length).to.equal(2);
+  });
+  it('can access faces', function() {
+    var faces = this.box.faces();
+    expect(faces.length).to.equal(6);
+    helpers.expectType(faces[0], 'Face');
+    var vertices = faces[0].vertices();
+    expect(vertices.length).to.equal(4);
+  });
+  it('can access shells', function() {
+    var shells = this.box.shells();
+    expect(shells.length).to.equal(1);
+    helpers.expectType(shells[0], 'Shell');
+    var vertices = shells[0].vertices();
+    expect(vertices.length).to.equal(8);
+  });
+});
+
+
 
 describe('topo', function() {
   it('makeEdge(geom.Curve)', function() {

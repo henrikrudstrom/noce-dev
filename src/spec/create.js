@@ -1,7 +1,7 @@
-var gp = require('../lib/gp.node');
-var geom = require('../lib/geom.node');
-var topo = require('../lib/topo.node');
-var primitives = require('../lib/primitives.js');
+var gp = require('../lib/gp.js');
+var geom = require('../lib/geom.js');
+var topo = require('../lib/topo.js');
+//var primitives = require('../lib/primitives.js');
 
 
 
@@ -145,6 +145,10 @@ var createtopo = {
   Shell() {
     var sphere = creategeom.SphericalSurface();
     return topo.makeShell(sphere, false);
+  },
+  Solid() {
+    var shell = createtopo.Shell();
+    return topo.makeSolid(shell);
   },
   Explorer() {
     var surface = creategeom.Face();

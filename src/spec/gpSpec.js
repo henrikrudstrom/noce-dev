@@ -1,4 +1,4 @@
-var gp = require('../lib/gp.node');
+var gp = require('../lib/gp.js');
 var helpers = require('./testHelpers.js');
 const expect = require('chai').expect;
 

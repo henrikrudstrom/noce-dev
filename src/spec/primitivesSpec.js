@@ -1,10 +1,10 @@
 const expect = require('chai').expect;
 const helpers = require('./testHelpers.js');
 const create = require('./create.js');
-const gp = require('../lib/gp.node');
-const geom = require('../lib/geom.node');
-const topo = require('../lib/topo.node');
-const primitives = require('../lib/primitives.node');
+const gp = require('../lib/gp.js');
+const geom = require('../lib/geom.js');
+const topo = require('../lib/topo.js');
+const primitives = require('../lib/primitives.js');
 
 describe('primitives', function() {
   it('makePrism(topo.Shape, gp.Vec, Boolean, Boolean)', function() {

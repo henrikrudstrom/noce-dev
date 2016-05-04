@@ -8,8 +8,8 @@ module.exports = function(mod) {
   mod.includeBRepPrim('BRepPrimAPI_MakeCone(*)');
   mod.includeBRepPrim('BRepPrimAPI_MakeCylinder(*)');
   mod.includeBRepPrim('BRepPrimAPI_MakeHalfSpace(*)');
-  mod.includeBRepPrim('BRepPrimAPI_MakePrism(*)');
-  mod.includeBRepPrim('BRepPrimAPI_MakeRevol(*)');
+  mod.includeBRepPrim('BRepPrimAPI_MakePrism(*)', 'Shape');
+  mod.includeBRepPrim('BRepPrimAPI_MakeRevol(*)', 'Shape');
   mod.includeBRepPrim('BRepPrimAPI_MakeSphere(*)');
   mod.includeBRepPrim('BRepPrimAPI_MakeTorus(*)');
   mod.includeBRepPrim('BRepPrimAPI_MakeWedge(*)');
@@ -20,5 +20,5 @@ module.exports = function(mod) {
   mod.find('*').defaultArgouts();
   mod.find('*').renameCamelCase('*');
   mod.removePrefix('*');
-  mod.noHandle('*');
+  //mod.noHandle('*');
 };

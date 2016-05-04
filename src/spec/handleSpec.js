@@ -1,5 +1,5 @@
-const geom = require('../lib/geom.node');
-const gp = require('../lib/gp.node');
+const geom = require('../lib/geom.js');
+const gp = require('../lib/gp.js');
 const helpers = require('./testHelpers.js');
 const create = require('./create.js');
 
