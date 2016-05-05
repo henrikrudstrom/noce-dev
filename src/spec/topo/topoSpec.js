@@ -9,8 +9,47 @@ const expect = require('chai').expect;
 
 describe('topo', function() {
   it('makeEdge(geom.Curve)', function() {
-    var res = topo.makeEdge(geomCreate.curve());
+    var line = new geom.Line(new gp.Pnt(0, 0, 0), new gp.Dir(1, 0, 0));
+    var curve = new geom.TrimmedCurve(line, 0, 1.5, true);
+    var res = topo.makeEdge(curve);
     helpers.expectType(res, 'Edge');
+
+  });
+  it('makeEdge(geom.Curve)', function() {
+    var curve = geom.TrimmedCurve.makeSegment(new gp.Pnt(0, 0, 0), new gp.Pnt(10, 0, 0));
+    var res = topo.makeEdge(curve);
+    helpers.expectType(res, 'Edge');
+
+  });
+
+
+  it('bottle(geom.Curve)', function() {
+    var height = 70
+    var width = 50
+    var thickness = 30
+    console.log('!!')
+    var pt1 = new gp.Pnt(-width / 2.0, 0, 0)
+    var pt2 = new gp.Pnt(-width / 2.0, -thickness / 4.0, 0)
+    var pt3 = new gp.Pnt(0, -thickness / 2.0, 0)
+    var pt4 = new gp.Pnt(width / 2.0, -thickness / 4.0, 0)
+    var pt5 = new gp.Pnt(width / 2.0, 0, 0)
+    console.log('!!')
+
+    var arc = geom.TrimmedCurve.makeArcOfCircle(pt2, pt3, pt4)
+    var segment1 = geom.TrimmedCurve.makeSegment(pt1, pt2)
+    var segment2 = geom.TrimmedCurve.makeSegment(pt4, pt5)
+    console.log('!!')
+
+    var trsf = new gp.Trsf();
+    trsf.setMirror(new gp.Ax1(new gp.Pnt(0, 0, 0), new gp.Dir(1, 0, 0)));
+    console.log('!!', segment1)
+
+    var edge1 = topo.makeEdge(segment1);
+    console.log('!!')
+    var edge2 = topo.makeEdge(arc);
+    console.log('!!')
+    var edge3 = topo.makeEdge(segment2);
+    console.log('!!')
   });
 
   it('makeEdge(geom.Curve, Double, Double)', function() {
@@ -25,6 +64,8 @@ describe('topo', function() {
     var res = topo.makeEdge(line, p1, p2);
     helpers.expectType(res, 'Edge');
   });
+
+
 
   xit('makeEdge(geom.Curve, topo.Vertex, topo.Vertex)', function() {
     var res = topo.makeEdge(geomCreate.curve(), topoCreate.vertex(), topoCreate.vertex());
@@ -71,6 +112,21 @@ describe('topo', function() {
     helpers.expectType(res, 'Wire');
   });
 
+  it('makeWire(Array)', function() {
+    var pt1 = new gp.Pnt(0, 0, 0);
+    var pt2 = new gp.Pnt(1, 4, 6);
+    var pt3 = new gp.Pnt(4, 5, 0);
+    var l1 = geom.TrimmedCurve.makeSegment(pt1, pt2);
+    var e1 = topo.makeEdge(l1);
+    var l2 = geom.TrimmedCurve.makeSegment(pt2, pt3);
+    var e2 = topo.makeEdge(l2);
+
+    var wire = topo.makeWire([e1, e2]);
+    expect(wire.edges().length).to.equal(2);
+    expect(wire.vertices().length).to.equal(3);
+  });
+
+
   xit('makeFace(topo.Face)', function() {
     var res = topo.makeFace(topoCreate.face());
     helpers.expectType(res, 'Face');
@@ -90,4 +146,6 @@ describe('topo', function() {
     var res = topo.makeShell(geomCreate.sphericalSurface(), 0, 1, 0, 1, false);
     helpers.expectType(res, 'Shell');
   });
+
+
 });
