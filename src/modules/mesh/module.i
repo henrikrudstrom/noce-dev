@@ -13,8 +13,9 @@
 %include attribute.i
 
 %include ../common/ExceptionCatcher.i
-%include "../topo/headers.i"
 
+%include "../geom/headers.i"
+%include "../topo/headers.i"
 %{
 #include<Mesh.h>
 #include<Util.h>
