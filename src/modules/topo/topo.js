@@ -1,63 +1,64 @@
+const arrify = require('arrify');
 const geom = require('./geom.js');
 const gp = require('./gp.js');
 const topo = require('./topo.node');
 
 
-Object.getPrototypeOf(topo.Edge.prototype).vertices = function vertices() {
-  return topo.TopExp.mapShapes(this, 7);
-};
+function addMethod(name, types, fn) {
+  arrify(types)
+    .map(type => Object.getPrototypeOf(type.prototype))
+    .forEach(proto => {
+      proto[name] = fn;
+    });
+}
 
-Object.getPrototypeOf(topo.Wire.prototype).vertices = function vertices() {
-  return topo.TopExp.mapShapes(this, 7);
-};
 
-Object.getPrototypeOf(topo.Face.prototype).vertices = function vertices() {
+addMethod('vertices', [
+  topo.Edge, topo.Wire, topo.Face, topo.Shell,
+  topo.Solid, topo.CompSolid, topo.Compound
+], function vertices() {
   return topo.TopExp.mapShapes(this, 7);
-};
+});
 
-Object.getPrototypeOf(topo.Shell.prototype).vertices = function vertices() {
-  return topo.TopExp.mapShapes(this, 7);
-};
-
-Object.getPrototypeOf(topo.Solid.prototype).vertices = function vertices() {
-  return topo.TopExp.mapShapes(this, 7);
-};
-
-Object.getPrototypeOf(topo.Wire.prototype).edges = function edges() {
+addMethod('edges', [
+  topo.Edge, topo.Wire, topo.Face, topo.Shell,
+  topo.Solid, topo.CompSolid, topo.Compound
+], function edges() {
   return topo.TopExp.mapShapes(this, 6);
-};
+});
 
-Object.getPrototypeOf(topo.Face.prototype).edges = function edges() {
-  return topo.TopExp.mapShapes(this, 6);
-};
-Object.getPrototypeOf(topo.Shell.prototype).edges = function edges() {
-  return topo.TopExp.mapShapes(this, 6);
-};
-Object.getPrototypeOf(topo.Solid.prototype).edges = function edges() {
-  return topo.TopExp.mapShapes(this, 6);
-};
-
-Object.getPrototypeOf(topo.Face.prototype).wires = function wires() {
+addMethod('wires', [
+  topo.Face, topo.Shell, topo.Solid, topo.CompSolid, topo.Compound
+], function wires() {
   return topo.TopExp.mapShapes(this, 5);
-};
-Object.getPrototypeOf(topo.Shell.prototype).wires = function wires() {
-  return topo.TopExp.mapShapes(this, 5);
-};
-Object.getPrototypeOf(topo.Solid.prototype).wires = function wires() {
-  return topo.TopExp.mapShapes(this, 5);
-};
+});
 
-Object.getPrototypeOf(topo.Shell.prototype).faces = function faces() {
+addMethod('faces', [
+  topo.Shell, topo.Solid, topo.CompSolid, topo.Compound
+], function faces() {
   return topo.TopExp.mapShapes(this, 4);
-};
+});
 
-Object.getPrototypeOf(topo.Solid.prototype).faces = function faces() {
-  return topo.TopExp.mapShapes(this, 4);
-};
-
-Object.getPrototypeOf(topo.Solid.prototype).shells = function shells() {
+addMethod('shells', [
+  topo.Solid, topo.CompSolid, topo.Compound
+], function shells() {
   return topo.TopExp.mapShapes(this, 3);
-};
+});
+
+addMethod('solids', [topo.CompSolid, topo.Compound], function solids() {
+  return topo.TopExp.mapShapes(this, 2);
+});
+
+addMethod('compSolids', [topo.Compound], function compSolids() {
+  return topo.TopExp.mapShapes(this, 1);
+});
+
+addMethod('geom', [topo.Edge], function() {
+  return topo.Tool.curve(this);
+});
+addMethod('geom', [topo.Face], function() {
+  return topo.Tool.surface(this);
+});
 
 
 module.exports = topo;

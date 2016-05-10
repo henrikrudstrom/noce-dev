@@ -1,8 +1,10 @@
 module.exports = function(mod) {
   mod.name = 'topo';
   mod.depends('geom');
+  mod.depends('geom2d');
   mod.depends('gp');
 
+  mod.include('TopLoc_Datum3D');
   mod.include('TopLoc_Location');
   mod.include('TopAbs_Orientation');
   mod.include('TopAbs_ShapeEnum');
@@ -13,8 +15,15 @@ module.exports = function(mod) {
   mod.include('TopoDS_Face');
   mod.include('TopoDS_Shell');
   mod.include('TopoDS_Solid');
+  mod.include('TopoDS_CompSolid');
+  mod.include('TopoDS_Compound');
 
   mod.upcast('TopoDS_Shape', 'upcastTopoDS');
+
+  mod.include('BRep_Tool');
+
+  // mod.find('TopoDS_Edge')
+  //   .staticAsMember('Brep_Tool::Curve()')
 
   mod.find('*').include('*');
   mod.include('TopExp');

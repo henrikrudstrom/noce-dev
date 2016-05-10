@@ -1,3 +1,3 @@
 %{
-#include<TopTools_ListIteratorOfListOfShape.hxx>  
+#include<TopTools_ListIteratorOfListOfShape.hxx>
 %}
