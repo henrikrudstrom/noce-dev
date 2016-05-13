@@ -81,6 +81,7 @@ module.exports = function(mod) {
     .exclude((decl) => decl.declType === 'constructor');
 
   mod.find('TopoDS_Shape')
+    .exclude('Nullify()')
     .property('Free()', 'Free(Standard_Boolean)')
     .property('Locked()', 'Locked(Standard_Boolean)')
     .property('Modified()', 'Modified(Standard_Boolean)')
