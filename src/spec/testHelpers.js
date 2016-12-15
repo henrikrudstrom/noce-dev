@@ -1,29 +1,29 @@
 const expect = require('chai').expect;
+const debug = require('debug');
+const log = debug('unittest');
 
-var inheritance = {
-  Shape: [
-    'Vertex', 'Edge', 'Wire', 'Face',
-    'Shell', 'Solid', 'CompSolid', 'Compound'
-  ]
-};
+const inheritance = require('./inheritance.js');
+function inheritedTypes(type) {
+  var types = inheritance[type] || [];
+  var nestedTypes = types.map(inheritedTypes);
+  types = [type].concat(types);
+  return [].concat.apply(types, nestedTypes);
+}
 
-module.exports.expectType = function(res, type) {
+module.exports.inheritedTypes = inheritedTypes;
+module.exports.expectType = function(res, type, exact) {
   if (type === 'Integer' || type === 'Double')
     return expect(res).to.be.a('number');
 
   if (type === 'Boolean')
     return expect(res).to.be.a('boolean');
 
-  if (type.indexOf('.') !== -1)
-    type = type.split('.')[1];
   expect(typeof res).to.equal('object');
+  if (type === 'Object') return true;
 
-  var className = res.constructor.name.replace('_exports_', '');
+  var className = res.qualifiedName || res.constructor.name;
 
-  var types = [type];
-  if (inheritance[type]) {
-    types = inheritance[type];
-  }
+  var types = inheritedTypes(type);
   expect(types).to.include(className);
   return true;
 };

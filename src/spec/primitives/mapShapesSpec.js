@@ -14,13 +14,13 @@ describe('topo.Solid', function() {
   it('can access vertices', function() {
     var vertices = this.box.vertices();
     expect(vertices.length).to.equal(8);
-    helpers.expectType(vertices[0], 'Vertex');
+    helpers.expectType(vertices[0], 'topo.Vertex');
   });
 
   it('can access edges', function() {
     var edges = this.box.edges();
     expect(edges.length).to.equal(12);
-    helpers.expectType(edges[0], 'Edge');
+    helpers.expectType(edges[0], 'topo.Edge');
 
     var vertices = edges[0].vertices();
     expect(vertices.length).to.equal(2);
@@ -29,7 +29,7 @@ describe('topo.Solid', function() {
   it('can access wires', function() {
     var wires = this.box.wires();
     expect(wires.length).to.equal(6);
-    helpers.expectType(wires[0], 'Wire');
+    helpers.expectType(wires[0], 'topo.Wire');
 
     var edges = wires[0].edges();
     expect(edges.length).to.equal(4);
@@ -41,7 +41,7 @@ describe('topo.Solid', function() {
   it('can access faces', function() {
     var faces = this.box.faces();
     expect(faces.length).to.equal(6);
-    helpers.expectType(faces[0], 'Face');
+    helpers.expectType(faces[0], 'topo.Face');
 
     var vertices = faces[0].vertices();
     expect(vertices.length).to.equal(4);
@@ -50,7 +50,7 @@ describe('topo.Solid', function() {
   it('can access shells', function() {
     var shells = this.box.shells();
     expect(shells.length).to.equal(1);
-    helpers.expectType(shells[0], 'Shell');
+    helpers.expectType(shells[0], 'topo.Shell');
 
     var vertices = shells[0].vertices();
     expect(vertices.length).to.equal(8);

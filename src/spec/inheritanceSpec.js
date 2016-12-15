@@ -23,4 +23,11 @@ describe('class inheritance', function() {
     expect(sphere.rotate).to.be.a('function');
     expect(sphere.isCnu).to.be.a('function');
   });
+
+  it('knows its classname', function() {
+    var ax2 = new gp.Ax2(new gp.Pnt(1, 2, 3), new gp.Dir(0, 0, 1));
+    var circle = new geom.Circle(ax2, 1);
+    expect(circle.constructor.name).to.equal('Circle');
+    expect(circle.constructor.prototype.name).to.equal('_exports_Curve');
+  });
 });

@@ -11,20 +11,20 @@ describe('topo', function() {
     var line = new geom.Line(new gp.Pnt(0, 0, 0), new gp.Dir(1, 0, 0));
     var curve = new geom.TrimmedCurve(line, 0, 1.5, true);
     var res = topo.makeEdge(curve);
-    helpers.expectType(res, 'Edge');
+    helpers.expectType(res, 'topo.Edge');
 
   });
 
   it('makeEdge(geom.Curve)', function() {
     var curve = geom.TrimmedCurve.makeSegment(new gp.Pnt(0, 0, 0), new gp.Pnt(10, 0, 0));
     var res = topo.makeEdge(curve);
-    helpers.expectType(res, 'Edge');
+    helpers.expectType(res, 'topo.Edge');
   });
 
 
   it('makeEdge(geom.Curve, Double, Double)', function() {
     var res = topo.makeEdge(create.geom.curve(), 0.5, 1);
-    helpers.expectType(res, 'Edge');
+    helpers.expectType(res, 'topo.Edge');
   });
 
   it('makeEdge(geom.Curve, gp.Pnt, gp.Pnt)', function() {
@@ -32,7 +32,7 @@ describe('topo', function() {
     var p2 = new gp.Pnt(5, 0, 0);
     var line = new geom.Line(p1, new gp.Dir(1, 0, 0));
     var res = topo.makeEdge(line, p1, p2);
-    helpers.expectType(res, 'Edge');
+    helpers.expectType(res, 'topo.Edge');
   });
 
 
@@ -99,21 +99,21 @@ describe('topo', function() {
 
   xit('makeFace(topo.Face)', function() {
     var res = topo.makeFace(topoCreate.face());
-    helpers.expectType(res, 'Face');
+    helpers.expectType(res, 'topo.Face');
   });
 
   xit('makeFace(topo.Wire, Boolean)', function() {
     var res = topo.makeFace(topoCreate.wire(), true);
-    helpers.expectType(res, 'Face');
+    helpers.expectType(res, 'topo.Face');
   });
 
   xit('makeShell(geom.Surface, Boolean)', function() {
     var res = topo.makeShell(geomCreate.sphericalSurface(), false);
-    helpers.expectType(res, 'Shell');
+    helpers.expectType(res, 'topo.Shell');
   });
 
   xit('makeShell(geom.Surface, Double, Double, Double, Double, Boolean)', function() {
     var res = topo.makeShell(geomCreate.sphericalSurface(), 0, 1, 0, 1, false);
-    helpers.expectType(res, 'Shell');
+    helpers.expectType(res, 'topo.Shell');
   });
 });

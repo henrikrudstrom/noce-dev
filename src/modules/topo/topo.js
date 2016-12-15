@@ -1,7 +1,7 @@
 const arrify = require('arrify');
 const geom = require('./geom.js');
 const gp = require('./gp.js');
-const topo = require('./topo.node');
+const topo = require('./_topo.node');
 
 
 function addMethod(name, types, fn) {
@@ -12,6 +12,34 @@ function addMethod(name, types, fn) {
     });
 }
 
+Object.getPrototypeOf(topo.Datum3D.prototype)
+  .qualifiedName = 'topo.Datum3D';
+Object.getPrototypeOf(topo.Location.prototype)
+  .qualifiedName = 'topo.Location';
+Object.getPrototypeOf(topo.Shape.prototype)
+  .qualifiedName = 'topo.Shape';
+Object.getPrototypeOf(topo.Vertex.prototype)
+  .qualifiedName = 'topo.Vertex';
+Object.getPrototypeOf(topo.Edge.prototype)
+  .qualifiedName = 'topo.Edge';
+Object.getPrototypeOf(topo.Wire.prototype)
+  .qualifiedName = 'topo.Wire';
+Object.getPrototypeOf(topo.Face.prototype)
+  .qualifiedName = 'topo.Face';
+Object.getPrototypeOf(topo.Shell.prototype)
+  .qualifiedName = 'topo.Shell';
+Object.getPrototypeOf(topo.Solid.prototype)
+  .qualifiedName = 'topo.Solid';
+Object.getPrototypeOf(topo.CompSolid.prototype)
+  .qualifiedName = 'topo.CompSolid';
+Object.getPrototypeOf(topo.Compound.prototype)
+  .qualifiedName = 'topo.Compound';
+Object.getPrototypeOf(topo.Tool.prototype)
+  .qualifiedName = 'topo.Tool';
+Object.getPrototypeOf(topo.TopExp.prototype)
+  .qualifiedName = 'topo.TopExp';
+Object.getPrototypeOf(topo.Handle_Datum3D.prototype)
+  .qualifiedName = 'topo.Handle_Datum3D';
 
 addMethod('vertices', [
   topo.Edge, topo.Wire, topo.Face, topo.Shell,

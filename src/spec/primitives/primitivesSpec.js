@@ -13,7 +13,7 @@ describe('primitives', function() {
     ));
     var face = topo.makeFace(plane, 0, 2, 0, 2, 0.01);
     var res = primitives.makePrism(face, new gp.Vec(1, 0, 0), false, true);
-    helpers.expectType(res, 'Shape');
+    helpers.expectType(res, 'topo.Shape');
   });
 
 
@@ -24,7 +24,7 @@ describe('primitives', function() {
     var face = topo.makeFace(plane, 0, 2, 0, 2, 0.01);
     var res = primitives.makePrism(face, new gp.Dir(1, 1, 0), false, false, false);
 
-    helpers.expectType(res, 'Shape');
+    helpers.expectType(res, 'topo.Shape');
   });
 
 
@@ -34,7 +34,7 @@ describe('primitives', function() {
     ));
     var face = topo.makeFace(plane, 0, 2, 0, 2, 0.01);
     var res = primitives.makeRevol(face, create.gp.ax1(), 0.5, false);
-    helpers.expectType(res, 'Shape');
+    helpers.expectType(res, 'topo.Shape');
   });
 
 
@@ -44,6 +44,6 @@ describe('primitives', function() {
     ));
     var face = topo.makeFace(plane, 0, 2, 0, 2, 0.01);
     var res = primitives.makeRevol(face, create.gp.ax1(), false);
-    helpers.expectType(res, 'Shape');
+    helpers.expectType(res, 'topo.Shape');
   });
 });

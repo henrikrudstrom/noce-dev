@@ -55,20 +55,20 @@ module.exports.notWorking = function(clsName, memberSig) {
 
 var returnType = {
   'geom.TrimmedCurve': {
-    'basisCurve()': 'Circle'
+    'basisCurve()': 'geom.Circle'
 
   },
   'geom.SphericalSurface': {
-    'vperiod()': 'Circle',
-    'viso(Double)': 'Circle',
-    'uiso(Double)': 'TrimmedCurve'
+    'vperiod()': 'geom.Circle',
+    'viso(Double)': 'geom.Circle',
+    'uiso(Double)': 'geom.TrimmedCurve'
   },
   'geom.CylindricalSurface': {
-    'viso(Double)': 'Circle'
+    'viso(Double)': 'geom.Circle'
   },
   'geom.Plane': {
-    'uiso(Double)': 'Line',
-    'viso(Double)': 'Line'
+    'uiso(Double)': 'geom.Line',
+    'viso(Double)': 'geom.Line'
   }
 };
 module.exports.returnType = function(clsName, memberSig) {

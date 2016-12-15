@@ -16,6 +16,6 @@ describe('fillet', function() {
     expect(res.isDone()).to.equal(true);
     console.log("hmm");
 
-    helpers.expectType(res.shape(), 'Compound');
+    helpers.expectType(res.shape(), 'topo.Compound');
   });
 });
